@@ -9,9 +9,6 @@ def compute_height(n, parents):
     # print("Debug: running compute_height")
     # Write this function
 
-    # Purely theoretically, the height of a tree corresponds to the amount
-    # of times there is an element higher than the prior, therefore:
-
     # firstly, i turn the string into an array
     splitar = parents.split(" ")
     # sort it
@@ -21,7 +18,7 @@ def compute_height(n, parents):
     # i make a variable for counting higher elements
     count = 0
     # then i iterate through the sorted array
-    for x in range(len(splitar)):
+    for x, y in enumerate(splitar):
         # i have a variable referencing current element
         curnum = splitar[x]
         # i check if it is larger than the previous
@@ -48,10 +45,12 @@ def main():
         # print("Input node count: ")
         nodecount = int(input())
         # print("Input node values: ")
-        parents = ""
-        for n in range(nodecount):
-            parents = parents + input() + " "
-        print("Parents var: " + parents)
+        parents = input()
+
+        #for n in range(nodecount):
+        #    parents = parents + input() + " "
+
+        # print("Parents var: " + parents)
         compute_height(nodecount, parents)
         
 
@@ -81,7 +80,6 @@ def main():
     # input number of elements
     # input values in one variable, separate with space, split these values in an array
     # call the function and output it's result
-    pass
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
