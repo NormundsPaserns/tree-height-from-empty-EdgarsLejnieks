@@ -44,32 +44,37 @@ def main():
     # print("select input type: ")
     inputtype = input()
     if "I" in inputtype:
-        # print("Input node count: ")
-        nodecount = int(input())
-        # print("Input node values: ")
-        parents = input()
+        try:
+            # print("Input node count: ")
+            nodecount = int(input())
+            # print("Input node values: ")
+            parents = input()
 
-        #for n in range(nodecount):
-        #    parents = parents + input() + " "
+            #for n in range(nodecount):
+            #    parents = parents + input() + " "
 
-        # print("Parents var: " + parents)
-        compute_height(nodecount, parents)
+            # print("Parents var: " + parents)
+            compute_height(nodecount, parents)
+        except EOFError as e:
+            print(e)
         
 
     elif "F" in inputtype:
-        # print("Input file path ")
-        filepath = input()
-        file = open(filepath, "r")
-        lines = file.readlines()
-        lncount = 0
-        for line in lines:
-            lncount += 1
-            if lncount == 1:
-                nodecount = int(line)
-            if lncount == 2:
-                parents = line
-        compute_height(nodecount, parents)
-            
+        try:
+            # print("Input file path ")
+            filepath = input()
+            file = open(filepath, "r")
+            lines = file.readlines()
+            lncount = 0
+            for line in lines:
+                lncount += 1
+                if lncount == 1:
+                    nodecount = int(line)
+                if lncount == 2:
+                    parents = line
+            compute_height(nodecount, parents)
+        except EOFError as e:
+            print(e) 
 
         #text = file.read()
         #todo: function
