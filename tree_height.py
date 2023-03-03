@@ -41,13 +41,13 @@ def compute_height(n, parents):
 
 def main():
     # implement input form keyboard and from files
-    print("I for text input, F for file input")
-    print("select input type: ")
+    # print("I for text input, F for file input")
+    # print("select input type: ")
     inputtype = input()
     if inputtype == "I":
-        print("Input node count: ")
+        # print("Input node count: ")
         nodecount = int(input())
-        print("Input node values: ")
+        # print("Input node values: ")
         parents = ""
         for n in range(nodecount):
             parents = parents + input() + " "
@@ -56,10 +56,21 @@ def main():
         
 
     elif inputtype == "F":
-        print("Input file path ")
+        # print("Input file path ")
         filepath = input()
         file = open(filepath, "r")
-        text = file.read()
+        lines = file.readlines()
+        lncount = 0
+        for line in lines:
+            lncount += 1
+            if lncount == 1:
+                nodecount = int(line)
+            if lncount == 2:
+                parents = line
+        compute_height(nodecount, parents)
+            
+
+        #text = file.read()
         #todo: function
     
     # todo:
