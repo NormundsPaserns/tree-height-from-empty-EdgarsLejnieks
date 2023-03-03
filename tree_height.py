@@ -6,12 +6,33 @@ import numpy
 
 
 def compute_height(n, parents):
-    print("Debug: running compute_height")
+    # print("Debug: running compute_height")
     # Write this function
 
     # Purely theoretically, the height of a tree corresponds to the amount
     # of times there is an element higher than the prior, therefore:
 
+    # firstly, i turn the string into an array
+    splitar = parents.split(" ")
+    # sort it
+    splitar.sort()
+    # put the first element in a var
+    prevnum = splitar[0]
+    # i make a variable for counting higher elements
+    count = 0
+    # then i iterate through the sorted array
+    for x in range(len(splitar)):
+        # i have a variable referencing current element
+        curnum = splitar[x]
+        # i check if it is larger than the previous
+        if curnum > prevnum:
+            # if yes, then add one to a counter
+            count += 1
+        # then assign current as previous
+        prevnum = curnum
+    # once loop is done, print the count
+    print(count)
+    #voila
 
     max_height = 0
     # Your code here
@@ -31,7 +52,7 @@ def main():
         for n in range(nodecount):
             parents = parents + input() + " "
         print("Parents var: " + parents)
-        # compute_height(nodecount, parents)
+        compute_height(nodecount, parents)
         
 
     elif inputtype == "F":
