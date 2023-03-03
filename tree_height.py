@@ -9,6 +9,8 @@ def compute_height(n, parents):
     # print("Debug: running compute_height")
     # Write this function
 
+    # does not account for chains of negative subtrees
+
     # firstly, i turn the string into an array
     splitar = parents.split(" ")
     # sort it
@@ -22,7 +24,7 @@ def compute_height(n, parents):
         # i have a variable referencing current element
         curnum = splitar[x]
         # i check if it is larger than the previous
-        if curnum > prevnum:
+        if curnum >= prevnum:
             # if yes, then add one to a counter
             count += 1
         # then assign current as previous
@@ -41,7 +43,7 @@ def main():
     # print("I for text input, F for file input")
     # print("select input type: ")
     inputtype = input()
-    if inputtype == "I":
+    if "I" in inputtype:
         # print("Input node count: ")
         nodecount = int(input())
         # print("Input node values: ")
@@ -54,7 +56,7 @@ def main():
         compute_height(nodecount, parents)
         
 
-    elif inputtype == "F":
+    elif "F" in inputtype:
         # print("Input file path ")
         filepath = input()
         file = open(filepath, "r")
