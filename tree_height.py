@@ -1,41 +1,47 @@
-# python3
+#python 3
+
+"""
+asdfasfasfasfasf
+
+    # prepare for the worst solution in the world
+    global exit_iteration
+    
+    hashedlist = {}
+    for iter, val in enumerate(splitlist):
+        hashedlist.update({iter:val})
+        if int(splitlist[iter]) < 0:
+            exit_iteration = iter
+            print(exit_iteration)
+
+    iterations = list(hashedlist.keys())
+    values = list(hashedlist.values())
+
+    tgt = values.index(exit_iteration)
+    tgt_iter = iterations[tgt]
+    print(tgt_iter)
+    #for iter, val in enumerate(hashedlist):
+    #    poslist = val_list.index()
+
+"""
 
 import sys
 import threading
 import numpy
 
+def recursive_find(splitlist, index, counter):
+    counter += 1
+    if splitlist[index] == -1: 
+        return counter
+    return recursive_find(splitlist, splitlist[index], counter)
 
 def compute_height(n, parents):
-    # print("Debug: running compute_height")
-    # Write this function
-
-    # does not account for chains of negative subtrees
-
-    # firstly, i turn the string into an array
-    splitar = parents.split(" ")
-    # sort it
-    splitar.sort()
-    # put the first element in a var
-    prevnum = splitar[0]
-    # i make a variable for counting higher elements
-    count = 0
-    # then i iterate through the sorted array
-    for x, y in enumerate(splitar):
-        # i have a variable referencing current element
-        curnum = splitar[x]
-        # i check if it is larger than the previous
-        if curnum >= prevnum:
-            # if yes, then add one to a counter
-            count += 1
-        # then assign current as previous
-        prevnum = curnum
-    # once loop is done, print the count
-    print(count)
-    #voila
-
-    max_height = 0
-    # Your code here
-    return max_height
+    print("Debug: running compute_height")
+    splitlist = [int(x) for x in parents.split(" ")]
+    counters = [0] * len(splitlist)
+    for i, j in enumerate(splitlist):
+        if splitlist[i] == -1: continue
+        counters[i] = recursive_find(splitlist, splitlist[i], counters[i])
+    print(max(counters)+1)
 
 
 def main():
@@ -73,6 +79,7 @@ def main():
                 if lncount == 2:
                     parents = line
             compute_height(nodecount, parents)
+            file.close()
         except EOFError as e:
             print(e) 
 
