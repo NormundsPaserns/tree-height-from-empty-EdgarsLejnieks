@@ -52,7 +52,7 @@ def main():
     #if "I" in inputtype:
     try:
         # print("Input node count: ")
-        nodecount = int(input())
+        nodecount = input()
         # print("Input node values: ")
         parents = input()
 
