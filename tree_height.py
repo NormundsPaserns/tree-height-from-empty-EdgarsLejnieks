@@ -48,23 +48,23 @@ def main():
     # implement input form keyboard and from files
     # print("I for text input, F for file input")
     # print("select input type: ")
-    inputtype = input()
-    if "I" in inputtype:
-        try:
-            # print("Input node count: ")
-            nodecount = int(input())
-            # print("Input node values: ")
-            parents = input()
+    #inputtype = input()
+    #if "I" in inputtype:
+    try:
+        # print("Input node count: ")
+        nodecount = int(input())
+        # print("Input node values: ")
+        parents = input()
 
-            #for n in range(nodecount):
-            #    parents = parents + input() + " "
+        #for n in range(nodecount):
+        #    parents = parents + input() + " "
 
-            # print("Parents var: " + parents)
-            compute_height(nodecount, parents)
-        except EOFError as e:
-            print(e)
+        # print("Parents var: " + parents)
+        compute_height(nodecount, parents)
+    except EOFError as e:
+        print(e)
         
-
+    """
     elif "F" in inputtype:
         try:
             # print("Input file path ")
@@ -85,6 +85,7 @@ def main():
 
         #text = file.read()
         #todo: function
+    """
     
     # todo:
     # let user input file name to use, don't allow file names with letter a
